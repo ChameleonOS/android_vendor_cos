@@ -1,6 +1,5 @@
-PRODUCT_BRAND ?= cyanogenmod
+PRODUCT_BRAND ?= chameleonos
 
-# To deal with CM9 specifications
 # TODO: remove once all devices have been switched
 ifneq ($(TARGET_BOOTANIMATION_NAME),)
 TARGET_SCREEN_DIMENSIONS := $(subst -, $(space), $(subst x, $(space), $(TARGET_BOOTANIMATION_NAME)))
@@ -14,7 +13,7 @@ endif
 
 ifneq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
 
-# clear TARGET_BOOTANIMATION_NAME in case it was set for CM9 purposes
+# clear TARGET_BOOTANIMATION_NAME
 TARGET_BOOTANIMATION_NAME :=
 
 # determine the smaller dimension
@@ -26,7 +25,7 @@ TARGET_BOOTANIMATION_SIZE := $(shell \
   fi )
 
 # get a sorted list of the sizes
-bootanimation_sizes := $(subst .zip,, $(shell ls vendor/cm/prebuilt/common/bootanimation))
+bootanimation_sizes := $(subst .zip,, $(shell ls vendor/cos/prebuilt/common/bootanimation))
 bootanimation_sizes := $(shell echo -e $(subst $(space),'\n',$(bootanimation_sizes)) | sort -rn)
 
 # find the appropriate size and set
@@ -43,10 +42,10 @@ endef
 $(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
 
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
+    vendor/cos/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
 endif
 
-ifdef CM_NIGHTLY
+ifdef COS_NIGHTLY
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.rommanager.developerid=cyanogenmodnightly
 else
@@ -68,77 +67,74 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Copy over the changelog to the device
 PRODUCT_COPY_FILES += \
-    vendor/cm/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
+    vendor/cos/CHANGELOG.mkdn:system/etc/CHANGELOG-COS.txt
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
-    vendor/cm/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
-    vendor/cm/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
-    vendor/cm/prebuilt/common/bin/blacklist:system/addon.d/blacklist
+    vendor/cos/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
+    vendor/cos/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
+    vendor/cos/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
+    vendor/cos/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/cos/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
+    vendor/cos/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 # userinit support
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
+    vendor/cos/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 
-# CM-specific init file
+# COS-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
+    vendor/cos/prebuilt/common/etc/init.local.rc:root/init.cm.rc
 
 # Compcache/Zram support
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bin/compcache:system/bin/compcache \
-    vendor/cm/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
+    vendor/cos/prebuilt/common/bin/compcache:system/bin/compcache \
+    vendor/cos/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
 
 # Nam configuration script
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bin/modelid_cfg.sh:system/bin/modelid_cfg.sh
+    vendor/cos/prebuilt/common/bin/modelid_cfg.sh:system/bin/modelid_cfg.sh
 
 PRODUCT_COPY_FILES += \
-    vendor/cm/proprietary/Term.apk:system/app/Term.apk
+    vendor/cos/proprietary/Term.apk:system/app/Term.apk
 
 # Copy JNI libarary of Term
 ifeq ($(TARGET_ARCH),arm)
 PRODUCT_COPY_FILES +=  \
-    vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
+    vendor/cos/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
 endif
 
 ifeq ($(TARGET_ARCH),mips)
 PRODUCT_COPY_FILES +=  \
-    vendor/cm/proprietary/lib/mips/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
+    vendor/cos/proprietary/lib/mips/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
 endif
 
 ifeq ($(TARGET_ARCH),x86)
 PRODUCT_COPY_FILES +=  \
-    vendor/cm/proprietary/lib/x86/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
+    vendor/cos/proprietary/lib/x86/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
 endif
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
-    vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
-    vendor/cm/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
+    vendor/cos/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
+    vendor/cos/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
-# This is CM!
+# This is COS!
 PRODUCT_COPY_FILES += \
-    vendor/cm/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
+    vendor/cos/config/permissions/org.chameleonos.android.xml:system/etc/permissions/org.chameleonos.android.xml
 
 # Don't export PS1 in /system/etc/mkshrc.
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/mkshrc:system/etc/mkshrc
+    vendor/cos/prebuilt/common/etc/mkshrc:system/etc/mkshrc
 
-# T-Mobile theme engine
-include vendor/cm/config/themes_common.mk
-
-# Required CM packages
+# Required COS packages
 PRODUCT_PACKAGES += \
     Camera \
     Development \
@@ -147,26 +143,27 @@ PRODUCT_PACKAGES += \
     Superuser \
     su
 
-# Optional CM packages
+# Optional COS packages
 PRODUCT_PACKAGES += \
     VideoEditor \
     VoiceDialer \
     SoundRecorder \
     Basic
 
-# Custom CM packages
+# Custom COS packages
 PRODUCT_PACKAGES += \
     Trebuchet \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
-    CMWallpapers \
+    Flypaper \
     Apollo \
     CMUpdater \
     CMFileManager \
-    LockClock
+    LockClock \
+    ThemeManager
 
-# Extra tools in CM
+# Extra tools in COS
 PRODUCT_PACKAGES += \
     openvpn \
     e2fsck \
@@ -193,50 +190,50 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     rsync
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
-PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/cos/overlay/dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/cos/overlay/common
 
-PRODUCT_VERSION_MAJOR = 10
-PRODUCT_VERSION_MINOR = 1
-PRODUCT_VERSION_MAINTENANCE = 0-RC0
+PRODUCT_VERSION_MAJOR = 5
+PRODUCT_VERSION_MINOR = 2
+PRODUCT_VERSION_MAINTENANCE = $(shell date -u +%Y%m%d)
 
-# Set CM_BUILDTYPE
-ifdef CM_NIGHTLY
-    CM_BUILDTYPE := NIGHTLY
+# Set COS_BUILDTYPE
+ifdef COS_NIGHTLY
+    COS_BUILDTYPE := NIGHTLY
 endif
-ifdef CM_EXPERIMENTAL
-    CM_BUILDTYPE := EXPERIMENTAL
+ifdef COS_EXPERIMENTAL
+    COS_BUILDTYPE := EXPERIMENTAL
 endif
-ifdef CM_RELEASE
-    CM_BUILDTYPE := RELEASE
+ifdef COS_RELEASE
+    COS_BUILDTYPE := RELEASE
 endif
 
-ifdef CM_BUILDTYPE
-    ifdef CM_EXTRAVERSION
+ifdef COS_BUILDTYPE
+    ifdef COS_EXTRAVERSION
         # Force build type to EXPERIMENTAL
-        CM_BUILDTYPE := EXPERIMENTAL
-        # Add leading dash to CM_EXTRAVERSION
-        CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
+        COS_BUILDTYPE := EXPERIMENTAL
+        # Add leading dash to COS_EXTRAVERSION
+        COS_EXTRAVERSION := -$(COS_EXTRAVERSION)
     endif
 else
-    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := UNOFFICIAL
-    CM_EXTRAVERSION :=
+    # If COS_BUILDTYPE is not defined, set to UNOFFICIAL
+    COS_BUILDTYPE := UNOFFICIAL
+    COS_EXTRAVERSION :=
 endif
 
-ifdef CM_RELEASE
-    CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
+ifdef COS_RELEASE
+    COS_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(COS_BUILD)
 else
     ifeq ($(PRODUCT_VERSION_MINOR),0)
-        CM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
+        COS_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(COS_BUILDTYPE)-$(COS_BUILD)$(COS_EXTRAVERSION)
     else
-        CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
+        COS_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(COS_BUILDTYPE)-$(COS_BUILD)$(COS_EXTRAVERSION)
     endif
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.cm.version=$(CM_VERSION) \
-  ro.modversion=$(CM_VERSION)
+  ro.cos.version=$(COS_VERSION) \
+  ro.modversion=$(COS_VERSION)
 
 
 -include $(WORKSPACE)/hudson/image-auto-bits.mk

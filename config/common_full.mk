@@ -1,5 +1,5 @@
-# Inherit common CM stuff
-$(call inherit-product, vendor/cm/config/common.mk)
+# Inherit common COS stuff
+$(call inherit-product, vendor/cos/config/common.mk)
 
 # Bring in all audio files
 include frameworks/base/data/sounds/NewAudio.mk
@@ -10,10 +10,10 @@ include frameworks/base/data/sounds/AudioPackageNewWave.mk
 # Bring in all video files
 $(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
 
-# Include CM audio files
-include vendor/cm/config/cm_audio.mk
+# Include COS audio files
+include vendor/cos/config/cos_audio.mk
 
-# Optional CM packages
+# Optional COS packages
 PRODUCT_PACKAGES += \
     HoloSpiralWallpaper \
     MagicSmokeWallpapers \

@@ -1,4 +1,4 @@
-# CyanogenMod Extras
+# ChameleonOS Extras
 
 on init
     export ANDROID_CACHE /cache

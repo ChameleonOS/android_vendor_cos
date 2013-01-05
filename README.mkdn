@@ -1,9 +1,9 @@
-CyanogenMod
+ChameleonOS
 ===========
 
 Submitting Patches
 ------------------
-Patches are always welcome!  Please submit your patches via CyanogenMod Gerrit!
+Patches are always welcome!  Please submit your patches via ChameleonOS Gerrit!
 You can do this by using these commands:
 
     (From root android directory)
@@ -20,31 +20,25 @@ For more help on using this tool, use this command: repo help upload
 Make your changes and commit with a detailed message, starting with what you are working with (i.e. vision: Update Kernel)
 Commit your patches in a single commit. Squash multiple commit using this command: git rebase -i HEAD~<# of commits>
 
-To view the status of your and others' patches, visit [CyanogenMod Code Review](http://review.cyanogenmod.com/)
+To view the status of your and others' patches, visit [ChameleonOS Code Review](http://review.chameleonos.org/)
 
 
 Getting Started
 ---------------
 
-To get started with Android/CyanogenMod, you'll need to get
+To get started with Android/ChameleonOS, you'll need to get
 familiar with [Git and Repo](http://source.android.com/download/using-repo).
 
-To initialize your local repository using the CyanogenMod trees, use a command like this:
+To initialize your local repository using the ChameleonOS trees, use a command like this:
 
-    repo init -u git://github.com/CyanogenMod/android.git -b ics
+    repo init -u git://github.com/ChameleonOS/android.git -b jellybean-mr1
 
 Then to sync up:
 
     repo sync
 
-Please see the [CyanogenMod Wiki](http://wiki.cyanogenmod.com/) for building instructions.
+Please see the [ChameleonOS Wiki](http://wiki.chameleonos.org/) for building instructions.
 
 For more information on this Github Organization and how it is structured, 
-please [read the wiki article](http://wiki.cyanogenmod.com/index.php/Github_Organization)
+please [read the wiki article](http://wiki.chameleonos.org/index.php/Github_Organization)
 
-Buildbot
---------
-
-All supported devices are built nightly and periodically as changes are committed to ensure the source trees remain buildable.
-
-You can view the current build statuses at [buildbot.teamdouche.net](http://buildbot.teamdouche.net/)
