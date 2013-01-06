@@ -4,7 +4,7 @@
 # cyanogen
 #
 
-. $ANDROID_BUILD_TOP/vendor/cm/tools/functions
+. $ANDROID_BUILD_TOP/vendor/cos/tools/functions
 
 OUT_TARGET_HOST=`uname -a | grep Darwin`
 if [ -z "$OUT_TARGET_HOST" ]
@@ -31,9 +31,9 @@ if [ ! -f "$OTAPACKAGE" ]; then
 fi
 
 # Determine what to name the new package
-MODVERSION=`sed -n -e'/ro\.cm\.version/s/^.*=//p' $OUT/system/build.prop`
+MODVERSION=`sed -n -e'/ro\.cos\.version/s/^.*=//p' $OUT/system/build.prop`
 echo -e $CL_CYN"MODVERSION: $MODVERSION"$CL_RST
-OUTFILE=$OUT/cm-$MODVERSION.zip
+OUTFILE=$OUT/cos-$MODVERSION.zip
 
 ln -f $OTAPACKAGE $OUTFILE
 

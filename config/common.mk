@@ -73,7 +73,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cos/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
     vendor/cos/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
-    vendor/cos/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
+    vendor/cos/prebuilt/common/bin/50-cos.sh:system/addon.d/50-cos.sh \
     vendor/cos/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
 # init.d support
@@ -87,7 +87,7 @@ PRODUCT_COPY_FILES += \
 
 # COS-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/cos/prebuilt/common/etc/init.local.rc:root/init.cm.rc
+    vendor/cos/prebuilt/common/etc/init.local.rc:root/init.cos.rc
 
 # Compcache/Zram support
 PRODUCT_COPY_FILES += \
