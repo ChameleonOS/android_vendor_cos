@@ -152,7 +152,7 @@ PRODUCT_PACKAGES += \
 
 # Custom COS packages
 PRODUCT_PACKAGES += \
-    Trebuchet \
+    ChaOSLauncher \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
