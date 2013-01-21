@@ -76,6 +76,9 @@ PRODUCT_COPY_FILES += \
     vendor/cos/prebuilt/common/bin/50-cos.sh:system/addon.d/50-cos.sh \
     vendor/cos/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
+PRODUCT_COPY_FILES += \
+    vendor/cos/prebuilt/common/xbin/su:system/xbin/su
+
 # init.d support
 PRODUCT_COPY_FILES += \
     vendor/cos/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
@@ -99,7 +102,8 @@ PRODUCT_COPY_FILES += \
     vendor/cos/prebuilt/common/bin/modelid_cfg.sh:system/bin/modelid_cfg.sh
 
 PRODUCT_COPY_FILES += \
-    vendor/cos/proprietary/Term.apk:system/app/Term.apk
+    vendor/cos/proprietary/Term.apk:system/app/Term.apk \
+    vendor/cos/proprietary/SuperSU.apk:system/app/SuperSU.apk
 
 # Copy JNI libarary of Term
 ifeq ($(TARGET_ARCH),arm)
@@ -139,9 +143,7 @@ PRODUCT_PACKAGES += \
     Camera \
     Development \
     LatinIME \
-    SpareParts \
-    Superuser \
-    su
+    SpareParts
 
 # Optional COS packages
 PRODUCT_PACKAGES += \
