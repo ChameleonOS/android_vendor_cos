@@ -192,6 +192,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     rsync
 
+PRODUCT_PACKAGES += \
+    cpufreq-info \
+    cpufreq-set
+
 PRODUCT_PACKAGE_OVERLAYS += vendor/cos/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cos/overlay/common
 
