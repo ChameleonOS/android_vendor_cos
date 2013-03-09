@@ -159,6 +159,7 @@ PRODUCT_PACKAGES += \
     CMUpdater \
     CMFileManager \
     LockClock \
+    PermissionManager \
     ThemeManager \
     Superuser \
     su
