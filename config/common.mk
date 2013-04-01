@@ -98,6 +98,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cos/prebuilt/common/bin/modelid_cfg.sh:system/bin/modelid_cfg.sh
 
+# Default chaos theme
+PRODUCT_COPY_FILES += \
+    vendor/cos/prebuilt/common/media/chaos.ctz:system/media/default.ctz
+
 
 # Copy JNI libarary of Term
 ifeq ($(TARGET_ARCH),arm)
