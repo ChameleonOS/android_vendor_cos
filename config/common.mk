@@ -242,7 +242,7 @@ endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cos.version=$(COS_VERSION) \
-  ro.modversion=$(COS_VERSION) \
+  ro.modversion=ChameleonOS-$(COS_VERSION) \
   ro.goo.developerid=chaos \
   ro.goo.rom=ChameleonOS \
   ro.goo.version=$(shell date +%s)
