@@ -162,6 +162,7 @@ PRODUCT_PACKAGES += \
     Apollo \
     CMUpdater \
     CMFileManager \
+    Firewall \
     LockClock \
     PermissionsManager \
     ThemeManager \
