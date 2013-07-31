@@ -1,0 +1,30 @@
+#!/system/bin/sh
+# create the necessary theme directories
+
+THEME_DIR=/data/system/theme
+ICON_DIR=/data/system/customized_icons
+FONTS_DIR=/data/fonts
+
+# create $THEME_DIR if it does not exist
+if [ ! -d "$THEME_DIR" ]; then
+    mkdir $THEME_DIR
+    chown system.system $THEME_DIR
+    chmod 0775 $THEME_DIR
+    touch $THEME_DIR/firstrun
+    chown system.system $THEME_DIR/firstrun
+fi
+
+# create $ICON_DIR if it does not exist
+if [ ! -d "$ICON_DIR" ]; then
+    mkdir $ICON_DIR
+    chown system.system $ICON_DIR
+    chmod 0775 $ICON_DIR
+fi
+
+# create $FONTS_DIR if it does not exist
+if [ ! -d "$FONTS_DIR" ]; then
+    mkdir $FONTS_DIR
+    chown system.system $FONTS_DIR
+    chmod 0775 $FONTS_DIR
+fi
+
