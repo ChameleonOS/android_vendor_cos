@@ -257,7 +257,7 @@ ifdef COS_BUILDTYPE
   PRODUCT_PROPERTY_OVERRIDES += \
     ro.goo.developerid=chaos \
     ro.goo.rom=ChameleonOS \
-    ro.goo.version=$(shell date +%s)
+    ro.goo.version=$(shell date +%s43)
 endif
 
 -include $(WORKSPACE)/hudson/image-auto-bits.mk
