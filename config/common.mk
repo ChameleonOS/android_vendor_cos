@@ -84,10 +84,6 @@ PRODUCT_COPY_FILES += \
     vendor/cos/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
     vendor/cos/prebuilt/common/bin/sysinit:system/bin/sysinit
 
-# theme support
-PRODUCT_COPY_FILES += \
-    vendor/cos/prebuilt/common/etc/init.d/80themeinit:system/etc/init.d/80themeinit
-
 # userinit support
 PRODUCT_COPY_FILES += \
     vendor/cos/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
