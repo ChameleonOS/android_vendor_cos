@@ -88,6 +88,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cos/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 
+# SELinux relabeling
+PRODUCT_COPY_FILES += \
+    vendor/cos/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
+
 # COS-specific init file
 PRODUCT_COPY_FILES += \
     vendor/cos/prebuilt/common/etc/init.local.rc:root/init.cos.rc
