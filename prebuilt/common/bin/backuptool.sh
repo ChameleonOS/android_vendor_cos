@@ -5,7 +5,7 @@
 
 export C=/tmp/backupdir
 export S=/system
-export V=10.1
+export V=0.8_4.3
 
 # Preserve /system/addon.d in /tmp/addon.d
 preserve_addon_d() {
@@ -22,7 +22,7 @@ restore_addon_d() {
 
 # Proceed only if /system is the expected major and minor version
 check_prereq() {
-if ( ! grep -q "^ro.cm.version=$V.*" /system/build.prop ); then
+if ( ! grep -q "^ro.cos.version=$V.*" /system/build.prop ); then
   echo "Not backing up files from incompatible version: $V"
   exit 127
 fi
