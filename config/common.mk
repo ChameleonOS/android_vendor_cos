@@ -41,16 +41,27 @@ $(eval TARGET_BOOTANIMATION_NAME := $(shell \
 endef
 $(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
 
+# Set COS_BUILDTYPE
+ifdef COS_NIGHTLY
+    COS_BUILDTYPE := NIGHTLY
+endif
+ifdef COS_EXPERIMENTAL
+    COS_BUILDTYPE := EXPERIMENTAL
+endif
+ifdef COS_RELEASE
+    COS_BUILDTYPE := RELEASE
+endif
+
 PRODUCT_COPY_FILES += \
     vendor/cos/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
 endif
 
 ifdef COS_NIGHTLY
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=cyanogenmodnightly
+    ro.rommanager.developerid=chameleonosnightly
 else
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=cyanogenmod
+    ro.rommanager.developerid=chameleonos
 endif
 
 # Embed superuser
@@ -69,8 +80,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dataroaming=false
 
 # Copy over the changelog to the device
-PRODUCT_COPY_FILES += \
-    vendor/cos/CHANGELOG.mkdn:system/etc/CHANGELOG-COS.txt
+ifdef COS_BUILDTYPE
+    ifdef COS_RELEASE
+        PRODUCT_COPY_FILES += \
+            vendor/cos/CHANGELOG.mkdn:system/etc/CHANGELOG-COS.txt
+    else
+        PRODUCT_COPY_FILES += \
+            vendor/cos/changelogs/$(COS_BUILD)/CHANGELOG.mkdn:system/etc/CHANGELOG-COS.txt
+    endif
+else
+    PRODUCT_COPY_FILES += \
+        vendor/cos/CHANGELOG.mkdn:system/etc/CHANGELOG-COS.txt
+endif
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
@@ -214,17 +235,6 @@ PRODUCT_VERSION_MAJOR = 0
 PRODUCT_VERSION_MINOR = 8_4.3
 PRODUCT_VERSION_MAINTENANCE = BETA
 
-# Set COS_BUILDTYPE
-ifdef COS_NIGHTLY
-    COS_BUILDTYPE := NIGHTLY
-endif
-ifdef COS_EXPERIMENTAL
-    COS_BUILDTYPE := EXPERIMENTAL
-endif
-ifdef COS_RELEASE
-    COS_BUILDTYPE := RELEASE
-endif
-
 ifdef COS_BUILDTYPE
     ifdef COS_EXTRAVERSION
         # Force build type to EXPERIMENTAL
@@ -257,7 +267,7 @@ ifdef COS_BUILDTYPE
   PRODUCT_PROPERTY_OVERRIDES += \
     ro.goo.developerid=chaos \
     ro.goo.rom=ChameleonOS \
-    ro.goo.version=$(shell date +%s43)
+    ro.goo.version=$(shell date +%s)
 endif
 
 -include $(WORKSPACE)/hudson/image-auto-bits.mk
