@@ -188,7 +188,7 @@ PRODUCT_PACKAGES += \
     audio_effects.conf \
     Flypaper \
     Apollo \
-    CMUpdater \
+    COSUpdater \
     CMFileManager \
     Firewall \
     LockClock \
