@@ -1,10 +1,10 @@
 #
 # This policy configuration will be used by all products that
-# inherit from CM
+# inherit from ChaOS
 #
 
 BOARD_SEPOLICY_DIRS += \
-    vendor/cm/sepolicy
+    vendor/cos/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     file_contexts \
