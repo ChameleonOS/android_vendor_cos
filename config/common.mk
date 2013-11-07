@@ -183,6 +183,7 @@ PRODUCT_PACKAGES += \
 # Custom COS packages
 PRODUCT_PACKAGES += \
     ChaOSLauncher \
+	Launcher3 \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
@@ -232,8 +233,8 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cos/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cos/overlay/common
 
 PRODUCT_VERSION_MAJOR = 0
-PRODUCT_VERSION_MINOR = 8_4.3.1
-PRODUCT_VERSION_MAINTENANCE = BETA
+PRODUCT_VERSION_MINOR = 8_4.4
+PRODUCT_VERSION_MAINTENANCE = ALPHA
 
 ifdef COS_BUILDTYPE
     ifdef COS_EXTRAVERSION
