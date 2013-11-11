@@ -182,7 +182,6 @@ PRODUCT_PACKAGES += \
 
 # Custom COS packages
 PRODUCT_PACKAGES += \
-    ChaOSLauncher \
 	Launcher3 \
     DSPManager \
     libcyanogen-dsp \
