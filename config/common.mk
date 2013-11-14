@@ -195,7 +195,9 @@ PRODUCT_PACKAGES += \
     PermissionsManager \
     ThemeManager \
     Superuser \
-    su
+    su \
+	ScreenRecorder \
+	libscreenrecorder
 
 # Extra tools in COS
 PRODUCT_PACKAGES += \
