@@ -11,6 +11,13 @@ Follow http://twitter.com/ChaOS_ROM for news and updates.
 
 CHANGELOG (notable new features)
 ---------
+### 0.9
+* Based on 4.4.2
+* Active Display
+* Gesture Anywhere
+* Immersive mode
+* Native screen recording w/audio
+* More to come, stay tuned!
 
 ### 0.8-beta
 * Theme compatibility mode which overrides theming when enabled for an installed application
